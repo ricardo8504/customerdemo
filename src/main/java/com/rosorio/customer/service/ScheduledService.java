@@ -11,7 +11,7 @@ public class ScheduledService {
         this.externalCustomerProcessService = externalCustomerProcessService;
     }
 
-    @Scheduled(fixedRate = 1 * 60 * 1000)
+    @Scheduled(fixedRate = 10 * 60 * 1000)
     public void process() {
         externalCustomerProcessService.process();
     }
