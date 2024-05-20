@@ -1,7 +1,9 @@
 package com.rosorio.customer.persistence.entities;
 
+import com.rosorio.customer.config.security.Authority;
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -18,9 +20,15 @@ public class User implements UserDetails {
     private String password;
     private Date createdAt;
     private Date updatedAt;
+    private List<String> authorities;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+        if(authorities != null && !authorities.isEmpty()) {
+            return authorities.stream()
+                    .map(authority -> (GrantedAuthority) () -> authority)
+                    .toList();
+        }
         return List.of();
     }
 

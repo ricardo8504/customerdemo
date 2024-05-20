@@ -4,6 +4,6 @@ services:
     environment:
       - 'MONGO_INITDB_DATABASE=customer'
       - 'MONGO_INITDB_ROOT_PASSWORD=secret'
-      - 'MONGO_INITDB_ROOT_USERNAME=root'
+      - 'MONGO_INITDB_ROOT_USERNAME=user'
     ports:
       - '27017'
